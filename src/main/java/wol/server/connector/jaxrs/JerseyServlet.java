@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import org.glassfish.jersey.servlet.ServletContainer;
+import org.glassfish.jersey.servlet.ServletContainer;
 
 //import com.sun.jersey.spi.spring.container.servlet.SpringServlet;
 
-@WebServlet( name="restServlet", displayName="Rest Servlet", urlPatterns = {"/rs/*"}, loadOnStartup=0)/*,
+@WebServlet( name="restServlet", displayName="Rest Servlet", urlPatterns = {"/rs/*"}, loadOnStartup=0,
 initParams = {
 	    @WebInitParam(name = "com.sun.jersey.config.property.packages",
-	            value = "wol.server.connector.jaxrs.resource")})*/
-public class JerseyServlet extends HttpServlet{ //SpringServlet extends ServletContainer
+	            value = "wol.server.connector.jaxrs.resource")})
+public class JerseyServlet extends ServletContainer{ 
 	private static final long serialVersionUID = -5282823652881942473L;
 
 	/*@Override
