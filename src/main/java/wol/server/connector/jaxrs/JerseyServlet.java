@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,22 +17,21 @@ import org.glassfish.jersey.servlet.ServletContainer;
 
 //import com.sun.jersey.spi.spring.container.servlet.SpringServlet;
 
-@WebServlet( name="restServlet", displayName="Rest Servlet", urlPatterns = {"/rs/*"}, loadOnStartup=0,
+@WebServlet( name="restServlet", displayName="Rest Servlet", urlPatterns = {"/testRest/*"}, loadOnStartup=1,
 initParams = {
-	    @WebInitParam(name = "com.sun.jersey.config.property.packages",
-	            value = "wol.server.connector.jaxrs.resource")})
+	    @WebInitParam(name = "javax.ws.rs.Application",
+	            value = "wol.server.connector.jaxrs.JerseyConfig")})
 public class JerseyServlet extends ServletContainer{ 
 	private static final long serialVersionUID = -5282823652881942473L;
 
-	/*@Override
+	@Override
 	public void init() throws ServletException {
 		super.init();
-	    System.out.println("Started");
-	}*/
-	
+	    System.out.println("Jersey restServlet Started");
+	}
+	/*
 	 @Override
-	    public void doGet(HttpServletRequest request,
-	            HttpServletResponse response)
+	    public void service(ServletRequest request, ServletResponse response)
 	            throws ServletException, IOException {
 
 	        response.setContentType("text/html");
@@ -65,4 +66,5 @@ public class JerseyServlet extends ServletContainer{
 	        out.println("</body></html>");
 	        out.close();
 	    }
+	    */
 }
