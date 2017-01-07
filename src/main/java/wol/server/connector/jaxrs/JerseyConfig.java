@@ -9,14 +9,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.springframework.context.annotation.Configuration;
 //import org.springframework.web.filter.RequestContextFilter;
-
-
-
-
-
-
-
-import wol.server.connector.jaxrs.resource.Login;
 import wol.server.connector.jaxrs.resource.View;
 
 @ApplicationPath("testRest")
@@ -26,7 +18,6 @@ public class JerseyConfig extends ResourceConfig {
 		// Register RequestContextFilter from Spring integration module. 
         register(RequestContextFilter.class);
 		register(View.class);
-		register(Login.class);
 		//packages("wol.server.connector.jaxrs.resource");
 		//register(TestController.class);
 		//register(RequestContextFilter.class);
