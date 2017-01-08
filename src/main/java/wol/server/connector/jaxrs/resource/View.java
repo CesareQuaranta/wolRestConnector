@@ -12,10 +12,13 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import wol.dom.Window;
 import wol.dom.WolContainer;
 import wol.dom.iEvent;
 import wol.dom.space.Position;
+import wol.server.connector.jaxrs.BcSerializer;
 
 @Path("view")
 public class View {
@@ -44,10 +47,16 @@ public class View {
 	
 	@GET
 	@Path("/window/events")
+	//@JsonSerialize(using=BcSerializer.class) 
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<iEvent> getEvents(@QueryParam("id") String id){
 		List<iEvent> events=wolContainer.getEvents(id);
-		return events;
+		if(events!=null && events.size()>0){
+			return events;
+		}else{
+			return null;
+		}
+		
 	}
 			
 
